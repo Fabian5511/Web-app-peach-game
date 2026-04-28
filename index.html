@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peach Clicker - Ultimate Juicy Empire</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="javascript" href="script.js">
+</head>
+<body>
+    <!-- Background Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Main Game Container -->
+    <div class="game-container">
+        <!-- Header Section -->
+        <header class="game-header">
+            <h1>🍑 Peach Clicker Empire 🍑</h1>
+            <div class="subtitle">Build Your Magical Orchard Kingdom</div>
+            <div class="version-badge">v2.1 - Harvest Update</div>
+        </header>
+
+        <!-- Stats Dashboard -->
+        <div class="stats-dashboard">
+            <div class="stat-card primary">
+                <div class="stat-icon">🍑</div>
+                <div class="stat-info">
+                    <div class="stat-label">Total Peaches</div>
+                    
+                    <div class="stat-value" id="peachCount">0</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-info">
+                    <div class="stat-label">Per Second</div>
+                    <div class="stat-value" id="peachPerSecond">0</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-info">
+                    <div class="stat-label">Prestige Level</div>
+                    <div class="stat-value" id="prestigeLevel">0</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🌟</div>
+                <div class="stat-info">
+                    <div class="stat-label">Achievements</div>
+                    <div class="stat-value"><span id="achievementCount">0</span>/25</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Area -->
+        <div class="main-game-area">
+            <!-- The Great Peach Section -->
+            <div class="peach-section">
+                <div class="peach-container">
+                    <div class="peach-aura" id="peachAura"></div>
+                    <button id="peachButton" class="great-peach">
+                        <div class="peach-shine"></div>
+                        <div class="peach-glow"></div>
+                    </button>
+                    <div class="click-multiplier" id="clickMultiplier">x1</div>
+                </div>
+                
+                <div class="peach-info">
+                    <div class="peach-level">
+                        <span>Peach Level: </span>
+                        <span id="peachLevel">1</span>
+                    </div>
+                    <div class="peach-power">
+                        <span>Click Power: </span>
+                        <span id="clickPower">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panel -->
+            <div class="side-panel">
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <button class="action-btn" id="autoClickBtn">
+                        <span class="btn-icon">🤖</span>
+                        <span class="btn-text">Auto Click</span>
+                        <span class="btn-status" id="autoClickStatus">OFF</span>
+                    </button>
+                    
+                    <button class="action-btn" id="boostBtn">
+                        <span class="btn-icon">⚡</span>
+                        <span class="btn-text">5x Boost</span>
+                        <span class="btn-cooldown" id="boostCooldown"></span>
+                    </button>
+                    
+                    <button class="action-btn" id="prestigeBtn">
+                        <span class="btn-icon">🌟</span>
+                        <span class="btn-text">Prestige</span>
+                        <span class="btn-requirement" id="prestigeReq">Need 1M</span>
+                    </button>
+                </div>
+
+                <!-- Mini Achievements -->
+                <div class="mini-achievements">
+                    <h4>Recent Achievements</h4>
+                    <div class="achievement-list" id="achievementList">
+                        <div class="achievement locked">
+                            <span class="ach-icon">🥇</span>
+                            <span class="ach-name">First Click</span>
+                        </div>
+                        <div class="achievement locked">
+                            <span class="ach-icon">💯</span>
+                            <span class="ach-name">Century Club</span>
+                        </div>
+                        <div class="achievement locked">
+                            <span class="ach-icon">🏭</span>
+                            <span class="ach-name">Industrialist</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upgrade Tabs -->
+        <div class="upgrade-tabs">
+            <button class="tab-btn active" data-tab="workers">
+                <span class="tab-icon">👥</span>
+                <span class="tab-label">Workers</span>
+            </button>
+            <button class="tab-btn" data-tab="upgrades">
+                <span class="tab-icon">⬆️</span>
+                <span class="tab-label">Upgrades</span>
+            </button>
+            <button class="tab-btn" data-tab="evolution">
+                <span class="tab-icon">🧬</span>
+                <span class="tab-label">Evolution</span>
+            </button>
+            <button class="tab-btn" data-tab="decorations">
+                <span class="tab-icon">🎨</span>
+                <span class="tab-label">Garden</span>
+            </button>
+        </div>
+
+        <!-- Workers Tab -->
+        <div class="tab-content active" id="workers-tab">
+            <div class="shop-section">
+                <h3>🧙‍♂️ Magical Workers</h3>
+                <div class="shop-grid">
+                    <div class="shop-item">
+                        <div class="item-icon">🧙‍♂️</div>
+                        <div class="item-info">
+                            <div class="item-name">Gnome Gardener</div>
+                            <div class="item-description">Harvests 1 peach per second</div>
+                            <div class="item-stats">
+                                <span>Owned: <span id="gnomeCount">0</span></span>
+                                <span>Production: <span id="gnomeProduction">0</span>/sec</span>
+                            </div>
+                        </div>
+                        <div class="item-purchase">
+                            <div class="item-cost" id="gnomeCost">10</div>
+                            <button class="buy-btn" id="buyGnome">BUY</button>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="item-icon">🧚‍♀️</div>
+                        <div class="item-info">
+                            <div class="item-name">Fairy Helper</div>
+                            <div class="item-description">Magically grows 5 peaches per second</div>
+                            <div class="item-stats">
+                                <span>Owned: <span id="fairyCount">0</span></span>
+                                <span>Production: <span id="fairyProduction">0</span>/sec</span>
+                            </div>
+                        </div>
+                        <div class="item-purchase">
+                            <div class="item-cost" id="fairyCost">100</div>
+                            <button class="buy-btn" id="buyFairy">BUY</button>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="item-icon">🤖</div>
+                        <div class="item-info">
+                            <div class="item-name">Harvest Bot</div>
+                            <div class="item-description">Automated harvesting: 25 peaches/sec</div>
+                            <div class="item-stats">
+                                <span>Owned: <span id="botCount">0</span></span>
+                                <span>Production: <span id="botProduction">0</span>/sec</span>
+                            </div>
+                        </div>
+                        <div class="item-purchase">
+                            <div class="item-cost" id="botCost">1000</div>
+                            <button class="buy-btn" id="buyBot">BUY</button>
+                        </div>
+                    </div>
+
+                    <div class="shop-item">
+                        <div class="item-icon">🏭</div>
+                        <div class="item-info">
+                            <div class="item-name">Peach Factory</div>
+                            <div class="item-description">Industrial production: 100 peaches/sec</div>
+                            <div class="item-stats">
+                                <span>Owned: <span id="factoryCount">0</span></span>
+                                <span>Production: <span id="factoryProduction">0</span>/sec</span>
+                            </div>
+                        </div>
+                        <div class="item-purchase">
+                            <div class="item-cost" id="factoryCost">10000</div>
+                            <button class="buy-btn" id="buyFactory">BUY</button>
+                        </div>
+                    </div>
+
+                    <div class="shop-item legendary">
+                        <div class="item-icon">🌌</div>
+                        <div class="item-info">
+                            <div class="item-name">Cosmic Orchard</div>
+                            <div class="item-description">Harnesses stellar energy: 500 peaches/sec</div>
+                            <div class="item-stats">
+                                <span>Owned: <span id="cosmicCount">0</span></span>
+                                <span>Production: <span id="cosmicProduction">0</span>/sec</span>
+                            </div>
+                        </div>
+                        <div class="item-purchase">
+                            <div class="item-cost" id="cosmicCost">100000</div>
+                            <button class="buy-btn" id="buyCosmic">BUY</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upgrades Tab -->
+        <div class="tab-content" id="upgrades-tab">
+            <div class="shop-section">
+                <h3>⬆️ Power Upgrades</h3>
+                <div class="upgrade-categories">
+                    <div class="upgrade-category">
+                        <h4>🖱️ Click Upgrades</h4>
+                        <div class="upgrade-list">
+                            <div class="upgrade-item">
+                                <span 
+

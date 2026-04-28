@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@400;600;700;800&family=Bungee&family=Lilita+One&family=Chewy&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fredoka One', cursive;
+    background: 
+        /* Sky gradient */
+        linear-gradient(to bottom, #87ceeb 0%, #98fb98 50%, #90ee90 100%),
+        /* Peach trees in background */
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><g opacity="0.3"><circle cx="50" cy="80" r="4" fill="%23ffb347"/><circle cx="55" cy="75" r="3" fill="%23ff8c69"/><circle cx="45" cy="85" r="3" fill="%23ff6347"/><circle cx="60" cy="82" r="2" fill="%23ffb347"/><rect x="48" y="90" width="4" height="20" fill="%23654321"/><polygon points="35,110 65,110 60,125 40,125" fill="%2332cd32"/></g><g opacity="0.25"><circle cx="200" cy="100" r="5" fill="%23ffb347"/><circle cx="205" cy="95" r="3" fill="%23ff8c69"/><circle cx="195" cy="105" r="4" fill="%23ff6347"/><circle cx="210" cy="102" r="2" fill="%23ffb347"/><rect x="198" y="115" width="4" height="25" fill="%23654321"/><polygon points="185,140 215,140 210,155 190,155" fill="%2332cd32"/></g><g opacity="0.2"><circle cx="120" cy="60" r="3" fill="%23ffb347"/><circle cx="125" cy="55" r="2" fill="%23ff8c69"/><rect x="118" y="70" width="4" height="18" fill="%23654321"/><polygon points="110,88 130,88 125,100 115,100" fill="%2332cd32"/></g></svg>'),
+        /* Farmers in background */
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><g opacity="0.2"><circle cx="80" cy="200" r="12" fill="%23ffdbac"/><rect x="74" y="212" width="12" height="18" fill="%23ff0000"/><rect x="70" y="230" width="20" height="20" fill="%230000ff"/><rect x="68" y="250" width="24" height="12" fill="%23654321"/><rect x="76" y="185" width="8" height="8" fill="%23654321"/><circle cx="77" cy="188" r="3" fill="%23654321"/></g><g opacity="0.15"><circle cx="320" cy="250" r="10" fill="%23ffdbac"/><rect x="315" y="260" width="10" height="15" fill="%23008000"/><rect x="312" y="275" width="16" height="18" fill="%23654321"/><rect x="310" y="293" width="20" height="10" fill="%23654321"/><rect x="318" y="240" width="4" height="6" fill="%23654321"/></g><g opacity="0.18"><circle cx="150" cy="280" r="8" fill="%23ffdbac"/><rect x="146" y="288" width="8" height="12" fill="%23800080"/><rect x="144" y="300" width="12" height="15" fill="%23654321"/><rect x="142" y="315" width="16" height="8" fill="%23654321"/></g></svg>');
+    background-size: 100% 100%, 500px 500px, 600px 600px;
+    background-position: 0 0, 0 0, 100px 50px;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+}
+
+/* Main Container */
+.game-container {
+    display: flex;
+    min-height: 100vh;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 30px;
+    border: 8px solid #654321;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+}
+
+/* Left Panel - Peach Side */
+.left-panel {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border: 8px solid #8b4513;
+    border-radius: 25px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 
+        0 12px 24px rgba(0,0,0,0.4),
+        inset 0 4px 8px rgba(255,255,255,0.5);
+}
+
+/* BUBBLE LETTER H1 STYLING - NO HOVER ANIMATION */
+h1, .peach-title {
+    font-family: 'Bungee', cursive;
+    font-size: 3em;
+    color: #ff6347;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 4px;
+    
+    /* Bubble letter effect with multiple text shadows */
+    text-shadow: 
+        /* Inner glow */
+        0 0 10px rgba(255,255,255,0.8),
+        /* Main outline layers */
+        -1px -1px 0px #8b4513,
+        1px -1px 0px #8b4513,
+        -1px 1px 0px #8b4513,
+        1px 1px 0px #8b4513,
+        -2px -2px 0px #654321,
+        2px -2px 0px #654321,
+        -2px 2px 0px #654321,
+        2px 2px 0px #654321,
+        -3px -3px 0px #5a3d1a,
+        3px -3px 0px #5a3d1a,
+        -3px 3px 0px #5a3d1a,
+        3px 3px 0px #5a3d1a,
+        -4px -4px 0px #4a2c14,
+        4px -4px 0px #4a2c14,
+        -4px 4px 0px #4a2c14,
+        4px 4px 0px #4a2c14,
+        -5px -5px 0px #3a1f0e,
+        5px -5px 0px #3a1f0e,
+        -5px 5px 0px #3a1f0e,
+        5px 5px 0px #3a1f0e,
+        /* Drop shadow */
+        8px 8px 16px rgba(0,0,0,0.6),
+        12px 12px 24px rgba(0,0,0,0.4);
+    
+    /* Bubble background */
+    background: linear-gradient(145deg, 
+        #ff6347 0%, 
+        #ff8c69 25%, 
+        #ffb347 50%, 
+        #ff8c69 75%, 
+        #ff6347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+    /* Additional bubble styling */
+    border: 1px solid #276521;
+    background-color: #deb887;
+    background-image: linear-gradient(145deg, #deb887, #d2b48c);
+    -webkit-text-fill-color: #ff6347;
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 
+        0 12px 24px rgba(0,0,0,0.5),
+        inset 0 4px 8px rgba(255,255,255,0.6),
+        inset 0 -4px 8px rgba(0,0,0,0.2);
+    
+    /* 3D Transform */
+    transform: perspective(500px) rotateX(15deg);
+    transform-style: preserve-3d;
+}
+
+/* Peach Box Container */
+.peach-box {
+    background: linear-gradient(145deg, rgba(255,248,220,0.95), rgba(255,239,213,0.95));
+    border: 10px solid #8b4513;
+    border-radius: 30px;
+    padding: 50px;
+    margin: 20px 0;
+    box-shadow: 
+        0 16px 32px rgba(0,0,0,0.5),
+        inset 0 6px 12px rgba(255,255,255,0.6),
+        inset 0 -6px 12px rgba(0,0,0,0.15);
+    position: relative;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(139,69,19,0.15) 15px, rgba(139,69,19,0.15) 30px);
+}
+
+/* Decorative corners for the box */
+.peach-box::before {
+    content: '🌾';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    font-size: 2.5em;
+    background: #deb887;
+    border-radius: 50%;
+    padding: 12px;
+    border: 6px solid #8b4513;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.peach-box::after {
+    content: '🌾';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 2.5em;
+    background: #deb887;
+    border-radius: 50%;
+    padding: 12px;
+    border: 6px solid #8b4513;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.peach-container {
+    position: relative;
+    margin: 40px 0;
+    perspective: 1000px;
+    text-align: center;
+}
+
+/* Enhanced Peach Aura */
+.peach-aura {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,99,71,0.4) 0%, rgba(255,165,0,0.3) 50%, transparent 70%);
+    border-radius: 50%;
+    animation: auraGlow 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    border: 4px solid rgba(255,99,71,0.2);
+}
+
+@keyframes auraGlow {
+    0% { 
+        transform: translate(-50%, -50%) scale(0.8); 
+        opacity: 0.6; 
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.2); 
+        opacity: 0.9; 
+    }
+}
+
+/* MORE REALISTIC PEACH BUTTON */
+#peachButton {
+    width: 340px;
+    height: 320px; /* Slightly taller than wide for peach shape */
+    border: 2px solid #000000;
+    border-radius: 45% 45% 50% 50%; /* Peach shape - wider at bottom */
+    cursor: pointer;
+    position: relative;
+    
+    /* More realistic peach gradient */
+    background: 
+        /* Top highlight */
+        radial-gradient(ellipse 90px 60px at 30% 20%, rgba(255,255,255,0.9) 0%, transparent 40%),
+        /* Side highlight */
+        radial-gradient(ellipse 40px 80px at 75% 35%, rgba(255,255,255,0.4) 0%, transparent 50%),
+        /* Peach crease shadow */
+        linear-gradient(5deg, transparent 45%, rgba(139,58,58,0.6) 48%, rgba(139,58,58,0.8) 50%, rgba(139,58,58,0.6) 52%, transparent 55%),
+        /* Shadow areas */
+        radial-gradient(ellipse 120px 100px at 80% 80%, rgba(139,58,58,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 100px 80px at 20% 85%, rgba(139,58,58,0.3) 0%, transparent 70%),
+        /* Main peach colors */
+        linear-gradient(160deg, #ffb347 0%, #ff8c69 30%, #ff6347 60%, #cd5c5c 85%, #8b3a3a 100%);
+    
+    box-shadow: 
+        0 25px 50px rgba(0,0,0,0.6),
+        inset 10px 10px 25px rgba(255,255,255,0.4),
+        inset -10px -10px 25px rgba(0,0,0,0.3),
+        inset 4px 4px 15px rgba(255,179,71,0.5),
+        inset -4px -4px 15px rgba(139,58,58,0.4),
+        0 0 60px rgba(255,99,71,0.5);
+    
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: peachFloat 4s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+/* Enhanced Peach Stem */
+#peachButton::before {
+    content: '';
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55px;
+    height: 35px;
+    background: linear-gradient(45deg, #228b22 0%, #32cd32 40%, #90ee90 100%);
+    border-radius: 0 0 30px 30px;
+    border: 4px solid #006400;
+    box-shadow: 
+        0 6px 12px rgba(0,0,0,0.5),
+        inset 3px 3px 8px rgba(255,255,255,0.5),
+        inset -3px -3px 8px rgba(34,139,34,0.7);
+    z-index: 5;
+}
+
+/* Multiple Peach Leaves */
+.peach-leaf-1 {
+    position: absolute;
+    top: -18px;
+    right: 25%;
+    width: 30px;
+    height: 40px;
+    background: 10px;
+}
