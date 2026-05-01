@@ -3,11 +3,28 @@ console.log("script started");
 let peachCount = 0;
 let autoClickerRunning = false;
 let autoClickerTimer;
+let gnomeCount = 0;
+const gnomeCost = 10;
+const gnomeProductionPerSecond = 1;
 
 function updatePeachDisplay() {
     const countDisplay = document.getElementById("peachCount");
     if (countDisplay) {
         countDisplay.innerText = peachCount;
+    }
+}
+
+function updateGnomeDisplay() {
+    const gnomeDisplay = document.getElementById("gnomeCount");
+    if (gnomeDisplay) {
+        gnomeDisplay.innerText = gnomeCount;
+    }
+}
+
+function updateGnomeProductionDisplay() {
+    const productionDisplay = document.getElementById("gnomeProduction");
+    if (productionDisplay) {
+        productionDisplay.innerText = gnomeCount * gnomeProductionPerSecond;
     }
 }
 
@@ -29,6 +46,25 @@ function toggleAutoClick() {
     }
 }
 
+function applyPassiveIncome() {
+    if (gnomeCount > 0) {
+        peachCount += gnomeCount * gnomeProductionPerSecond;
+        updatePeachDisplay();
+        updateGnomeProductionDisplay();
+    }
+}
+
+function buyGnome() {
+    if (peachCount >= gnomeCost) {
+        peachCount -= gnomeCost;
+        gnomeCount += 1;
+        updatePeachDisplay();
+        updateGnomeDisplay();
+        updateGnomeProductionDisplay();
+        console.log("Gnome bought");
+    }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     const peachButton = document.getElementById("peachButton");
     if (peachButton) {
@@ -47,28 +83,9 @@ document.addEventListener("DOMContentLoaded", () => {
     
     updatePeachDisplay();
     updateGnomeDisplay();
+    updateGnomeProductionDisplay();
+    setInterval(applyPassiveIncome, 1000);
 });
-
-let gnomeCount = 0;
-const gnomeCost = 10;
-
-function updateGnomeDisplay() {
-    const gnomeDisplay = document.getElementById("gnomeCount");
-    if (gnomeDisplay) {
-        gnomeDisplay.innerText = gnomeCount;
-    }
-}
-
-function buyGnome() {
-    if (peachCount >= gnomeCost) {
-        peachCount -= gnomeCost;
-        gnomeCount += 1;
-        updatePeachDisplay();
-        updateGnomeDisplay();
-        console.log("Gnome bought ");
-    }
-}
-
 
 
 
