@@ -20,22 +20,87 @@ body {
     background-attachment: fixed;
     min-height: 100vh;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-weight: 400;
+    border: 14px solid #654321;
+    box-sizing: border-box;
 }
 
 /* Main Container */
 .game-container {
     display: flex;
     min-height: 100vh;
-    max-width: 1500px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
-    gap: 30px;
-    border: 8px solid #654321;
+    gap: 15px;
+    border: none;
     border-radius: 30px;
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 12px 24px rgba(0,0,0,0.4);
+    background: transparent;
+    box-shadow: none;
+    align-items: flex-start;
+}
+
+.left-column {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+.game-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.peach-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+}
+
+.peach-section {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stats-dashboard {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.stat-card {
+    flex: 0 1 auto;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.gold-peach {
+    color: #ffdd57;
+    text-shadow:
+        0 0 8px rgba(255, 223, 0, 0.6),
+        0 0 18px rgba(255, 200, 0, 0.45),
+        0 0 calc(var(--prestige-glow, 1) * 6px) rgba(255, 215, 0, 0.35);
+}
+
+.right-column {
+    flex: 0 1 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+    max-height: 100vh;
 }
 
 /* Left Panel - Peach Side */
@@ -105,19 +170,15 @@ h1, .peach-title {
     background-clip: text;
     
     /* Additional bubble styling */
-    border: 1px solid #276521;
-    background-color: #deb887;
-    background-image: linear-gradient(145deg, #deb887, #d2b48c);
+    border: none;
+    background: transparent;
     -webkit-text-fill-color: #ff6347;
-    padding: 25px;
-    border-radius: 25px;
-    box-shadow: 
-        0 12px 24px rgba(0,0,0,0.5),
-        inset 0 4px 8px rgba(255,255,255,0.6),
-        inset 0 -4px 8px rgba(0,0,0,0.2);
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
     
     /* 3D Transform */
-    transform: perspective(500px) rotateX(15deg);
+    transform: none;
     transform-style: preserve-3d;
 }
 
@@ -201,57 +262,40 @@ h1, .peach-title {
 
 /* MORE REALISTIC PEACH BUTTON */
 #peachButton {
-    width: 340px;
-    height: 320px; /* Slightly taller than wide for peach shape */
-    border: 2px solid #000000;
-    border-radius: 45% 45% 50% 50%; /* Peach shape - wider at bottom */
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: none;
+    border-radius: 0;
     cursor: pointer;
     position: relative;
-    
-    /* More realistic peach gradient */
-    background: 
-        /* Top highlight */
-        radial-gradient(ellipse 90px 60px at 30% 20%, rgba(255,255,255,0.9) 0%, transparent 40%),
-        /* Side highlight */
-        radial-gradient(ellipse 40px 80px at 75% 35%, rgba(255,255,255,0.4) 0%, transparent 50%),
-        /* Peach crease shadow */
-        linear-gradient(5deg, transparent 45%, rgba(139,58,58,0.6) 48%, rgba(139,58,58,0.8) 50%, rgba(139,58,58,0.6) 52%, transparent 55%),
-        /* Shadow areas */
-        radial-gradient(ellipse 120px 100px at 80% 80%, rgba(139,58,58,0.5) 0%, transparent 60%),
-        radial-gradient(ellipse 100px 80px at 20% 85%, rgba(139,58,58,0.3) 0%, transparent 70%),
-        /* Main peach colors */
-        linear-gradient(160deg, #ffb347 0%, #ff8c69 30%, #ff6347 60%, #cd5c5c 85%, #8b3a3a 100%);
-    
-    box-shadow: 
-        0 25px 50px rgba(0,0,0,0.6),
-        inset 10px 10px 25px rgba(255,255,255,0.4),
-        inset -10px -10px 25px rgba(0,0,0,0.3),
-        inset 4px 4px 15px rgba(255,179,71,0.5),
-        inset -4px -4px 15px rgba(139,58,58,0.4),
-        0 0 60px rgba(255,99,71,0.5);
-    
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14rem;
+    line-height: 1;
+    background: transparent;
+    color: #8b4513;
+    box-shadow: none;
+    transition: transform 0.2s ease;
     animation: peachFloat 4s ease-in-out infinite;
-    transform-style: preserve-3d;
 }
 
-/* Enhanced Peach Stem */
+#peachButton:active,
+#peachButton.bounce {
+    animation: bouncePeach 0.35s ease-out;
+    transform: translateY(-8px);
+}
+
 #peachButton::before {
-    content: '';
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 55px;
-    height: 35px;
-    background: linear-gradient(45deg, #228b22 0%, #32cd32 40%, #90ee90 100%);
-    border-radius: 0 0 30px 30px;
-    border: 4px solid #006400;
-    box-shadow: 
-        0 6px 12px rgba(0,0,0,0.5),
-        inset 3px 3px 8px rgba(255,255,255,0.5),
-        inset -3px -3px 8px rgba(34,139,34,0.7);
-    z-index: 5;
+    display: none;
+}
+
+@keyframes bouncePeach {
+    0% { transform: translateY(0) scale(1); }
+    40% { transform: translateY(-24px) scale(1.1); }
+    70% { transform: translateY(-12px) scale(0.97); }
+    100% { transform: translateY(0) scale(1); }
 }
 
 /* Multiple Peach Leaves */
@@ -262,4 +306,15 @@ h1, .peach-title {
     width: 30px;
     height: 40px;
     background: 10px;
+}
+
+.item-cost {
+    margin-top: 10px;
+    font-size: 0.88rem;
+    color: #3d2b17;
+    font-weight: 700;
+}
+
+.upgrade-item {
+    margin-bottom: 16px;
 }
